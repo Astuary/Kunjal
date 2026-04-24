@@ -1,22 +1,18 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
-import {Tag, ContainerLayout, ResearchPost, Period, Venue, Category, Intro, SubTitle, Title, Text} from "../components/common"
+import { graphql } from "gatsby"
+import {Tag, ContainerLayout, ResearchPost, Period, Venue, Intro, Title, Text, Authors} from "../components/common"
 
 const ResearchIndex = ({ data }) => {
   const works = data.allMarkdownRemark.edges
+  const highlightedName = "Kunjal Panchal"
 
   return (
       <Layout> 
         <SEO title="Research" />
         <Intro>
           <ContainerLayout>
-
-            <SubTitle className="text-dark">
-              Research Work
-            </SubTitle>
 
             <ContainerLayout className="wrapper">
               {works.map(({ node }) => {
@@ -25,9 +21,15 @@ const ResearchIndex = ({ data }) => {
                   <ResearchPost key={node.fields.slug}>
                     <div className="content">
                       <header>
-                        <div style={{lineHeight: '40px'}}>
-                          {node.frontmatter.authors.map((tag, index) => (<Category key={index}>{tag}</Category>))}
-                        </div>
+                        <Authors>
+                          <strong>Authors:</strong>{" "}
+                          {node.frontmatter.authors.map((author, index) => (
+                            <React.Fragment key={author}>
+                              {index > 0 ? ", " : ""}
+                              {author === highlightedName ? <strong>{author}</strong> : author}
+                            </React.Fragment>
+                          ))}
+                        </Authors>
                         <Title>
                           <a className="text-primary lined-link" style={{ boxShadow: `none` }} href={node.frontmatter.url}>
                             {title}
@@ -36,15 +38,15 @@ const ResearchIndex = ({ data }) => {
                         <Venue>{node.frontmatter.venue}</Venue>
                         <Period>{node.frontmatter.period}</Period>
                       </header>
-                      <br/>
-                        <Text
-                          dangerouslySetInnerHTML={{
-                            __html: node.frontmatter.description || node.excerpt,
-                          }}
-                        />
-                        <div>
-                          {node.frontmatter.tags.map((tag, index) => (<Tag key={index}>{tag}</Tag>))}
-                        </div>
+                      <Text
+                        style={{ clear: "both", marginTop: "1.25rem", lineHeight: 1.7 }}
+                        dangerouslySetInnerHTML={{
+                          __html: node.frontmatter.description || node.excerpt,
+                        }}
+                      />
+                      <div style={{ marginTop: "0.25rem" }}>
+                        {node.frontmatter.tags.map((tag, index) => (<Tag key={index}>{tag}</Tag>))}
+                      </div>
                     </div>
                   </ResearchPost>
                 )

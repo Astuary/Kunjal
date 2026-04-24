@@ -26,8 +26,10 @@ export const NavbarElement = styled.div`
 export const NavbarList = styled.ul`
   padding-left: 0;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.25rem;
   list-style: none;
+  margin: 0;
   > li a {
     font-size: 1.2rem;
     color: #232323;
@@ -46,6 +48,20 @@ export const NavbarList = styled.ul`
     }
     @media(max-width: ${variables.breakpointPhone}) {
       font-size: 1rem;
+    }
+  }
+  @media(max-width: ${variables.breakpointPhone}) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem;
+    > li {
+      flex: 1 1 30%;
+      max-width: 150px;
+    }
+    > li a {
+      margin: 0;
+      padding: 0.6rem 0.2rem;
     }
   }
 `

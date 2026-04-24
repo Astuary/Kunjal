@@ -1,5 +1,5 @@
 import React from 'react'
-import { Star, Key } from "react-feather"
+import { Star, Key, GitBranch } from "react-feather"
 import {FooterItem, Circle} from "../../../styled/repository"
 
 export const RepositoryFooter = ({ repo }) => {
@@ -28,6 +28,10 @@ export const RepositoryFooter = ({ repo }) => {
       <FooterItem>
         <Star className="star" />
         <span> {repo.stargazers.totalCount}{" "} </span>
+      </FooterItem>
+      <FooterItem>
+        <GitBranch className="forkcount" />
+        <span> {repo.forkCount}{" "} </span>
       </FooterItem>
       {repo.licenseInfo && (
         <FooterItem>

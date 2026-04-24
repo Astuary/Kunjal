@@ -4,17 +4,30 @@ import variables from '../../data/variables';
 
 export const AboutSection = styled.section`
   text-align: center;
+  @media only screen and (max-width: ${variables.breakpointLarge}) {
+    text-align: left;
+  }
   @media only screen and (min-width: ${variables.breakpointLarge}) {
     display: grid;
     grid-template-columns: 1fr 1.25fr;
-    grid-gap: 10rem;
+    grid-gap: 4rem;
+    align-items: stretch;
     text-align: left;
+    > .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
 `
 export const Avatar =styled(Img)`
   border-radius: 5px;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.15);
   width: 100%;
+  height: 100%;
+  > div {
+    height: 100%;
+  }
 `
 export const Title = styled.h1`
   font-size: 3rem;
@@ -26,9 +39,9 @@ export const Title = styled.h1`
 `
 export const Text = styled.p`
   font-size: 1.2rem;
-  line-height: 2;
+  line-height: 1.75;
   color: #232323;
-  text-align: justify;
+  text-align: left;
   a {
     color: #3F51B5;
     text-decoration: underline;

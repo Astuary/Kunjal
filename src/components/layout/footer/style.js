@@ -45,6 +45,7 @@ export const FooterBody = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	align-items: center;
+  gap: 2rem;
 	@media(max-width: ${variables.breakpointPhone}) {
 		grid-template-columns: 1fr;
 	}
@@ -70,4 +71,21 @@ export const MediaLink = styled.a`
   font-family: "GT-Walsheim-Pro-Bold";
 	color: ${variables.primary};
 	
+`
+
+export const FooterLowerBar = styled.div`
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #e7e7e7;
+  border-radius: 14px;
+  background: #ffffffcc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  @media(max-width: ${variables.breakpointPhone}) {
+    flex-direction: column;
+    text-align: center;
+  }
 `

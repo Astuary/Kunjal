@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
-import {Tag, ContainerLayout, WorkPost, Venue, Period, Category, Intro, SubTitle, Title, Text} from "../components/common"
+import {ContainerLayout, WorkPost, Venue, Period, Category, Intro, SubTitle, Title, Text} from "../components/common"
 
 const EducationIndex = ({ data }) => {
   const works = data.allMarkdownRemark.edges
@@ -32,7 +32,12 @@ const EducationIndex = ({ data }) => {
                           {node.frontmatter.categories.map((tag, index) => (<Category key={index}>{tag}</Category>))}
                         </div>
                         <Title>
-                          <Link className="text-primary lined-link" style={{ boxShadow: `none` }} to={node.fields.slug}>
+                          <Link
+                            className="text-primary lined-link"
+                            style={{ boxShadow: `none`, pointerEvents: "none", cursor: "default" }}
+                            to="#"
+                            onClick={(e) => e.preventDefault()}
+                          >
                             {title}
                           </Link>
                         </Title>
@@ -45,9 +50,6 @@ const EducationIndex = ({ data }) => {
                             __html: node.frontmatter.description || node.excerpt,
                           }}
                         />
-                        <div>
-                          {node.frontmatter.tags.map((tag, index) => (<Tag key={index}>{tag}</Tag>))}
-                        </div>
                     </div>
                   </WorkPost>
                 )

@@ -56,8 +56,19 @@ export const GlobalStyle = createGlobalStyle`
     sup {
       top: -0.5em;
     }
-    img {
+    img,
+    picture {
       border-style: none;
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+    .gatsby-image-wrapper,
+    .gatsby-image-outer-wrapper {
+      -webkit-user-select: none;
+      user-select: none;
     }
     .center {
       text-align: center;

@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
-import {Tag, ContainerLayout, WorkPost, Category, Intro, SubTitle, Title, Text, Period} from "../components/common"
+import {Tag, ContainerLayout, WorkPost, Category, Intro, Title, Text, Period} from "../components/common"
 
 const WorkIndex = ({ data }) => {
   const works = data.allMarkdownRemark.edges
@@ -14,11 +14,6 @@ const WorkIndex = ({ data }) => {
         <SEO title="Work Experience" />
         <Intro>
           <ContainerLayout>
-
-            <SubTitle className="text-dark">
-              Professional Work Experience
-            </SubTitle>
-
             <ContainerLayout className="wrapper">
               {works.map(({ node }) => {
               const title = node.frontmatter.title || node.fields.slug
@@ -39,7 +34,12 @@ const WorkIndex = ({ data }) => {
                         <Period>{node.frontmatter.period}</Period>
                         {/* <Category>{node.frontmatter.category}</Category> */}
                         <Title>
-                          <Link className="text-primary lined-link" style={{ boxShadow: `none` }} to={node.fields.slug}>
+                          <Link
+                            className="text-primary lined-link"
+                            style={{ boxShadow: `none`, pointerEvents: "none", cursor: "default" }}
+                            to="#"
+                            onClick={(e) => e.preventDefault()}
+                          >
                             {title}
                           </Link>
                         </Title>

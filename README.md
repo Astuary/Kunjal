@@ -28,6 +28,7 @@
 
     Start development server
     ```shell
+    gatsby clean
     gatsby develop
     ```
 
@@ -42,6 +43,8 @@
     Deploy to Github Pages using 
     
     ```
+    gatsby clean
+    gatsby build
     npm run deploy
     ```
 

@@ -82,6 +82,10 @@ export const FooterItem = styled.span`
       fill: #FBC02D;
       stroke: #FFC107;
     }
+    &.forkcount {
+      fill: #157A6E;
+      stroke: #157A6E;
+    }
   }
   @media(max-width: ${variables.breakpointPhone}) {
     margin-right: .49rem;

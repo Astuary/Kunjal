@@ -4,9 +4,9 @@ tags: ['Federated Learning']
 categories: ['Manning College of Information and Computer Sciences - University of Massachusetts, Amherst']
 image: './cics.jpg'
 date: "2021-06-16T22:12:03.284Z"
-period: 'September 2021 - Current'
+period: 'September 2021 - May 2026'
 gpa: '3.7/4.0'
-description: "Research Area: Personalization in Federated Learning"
+description: "Research Area(s): Machine Learning in Resource-constrained Environments, Federated Learning, Gradient Estimation Techniques"
 ---
 
 

@@ -13,7 +13,7 @@ const NotFoundPage = () => (
         </svg>
         <Title>404</Title>
         <Title>NOT FOUND</Title>
-        <SubText>You just hit a route that doesn&#39;t exist... the sadness.</SubText>
+        <SubText>Fortunately, I am a better machine learning researcher than a web developer :)</SubText>
       </Intro>
     </ContainerLayout>
   </Layout>

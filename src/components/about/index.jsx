@@ -6,9 +6,9 @@ import {SectionIntro, ContainerLayout, ResumeButton} from "../common";
 const About = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "me.webp" }) {
+      placeholderImage: file(relativePath: { eq: "botanic.jpeg" }) {
         childImageSharp {
-          fluid(maxWidth: 550) {
+          fluid(maxWidth: 700, quality: 95) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -20,16 +20,16 @@ const About = () => {
       <SectionIntro>
         <ContainerLayout>
           <AboutSection>
-            <div>
-              <Avatar fluid={data.placeholderImage.childImageSharp.fluid} alt="user photo" />
-              {/* <SubTitle><div style={{color:'#ff2d2d'}}>PhD student</div> in <b className="text-secondary lined-link">Computer Science</b> at <div style={{color: '#ff2d2d'}}>UMass, Amherst</div></SubTitle> */}
-            </div> 
-            <div>
-              <Title> Hello, I’m Kunjal </Title>
-              <Text> I'm a PhD student at Manning College of Information and Computer Sciences, Universtiy of Massachusetts - Amherst; hailing from India. </Text>
-              <Text> My main area of research is <b className="text-primary lined-link">Personalized Federated Learning</b>, advised by Prof. Hui Guan.</Text>
+            <Avatar
+              fluid={data.placeholderImage.childImageSharp.fluid}
+              alt="my photo"
+            />
+            <div className="about-content">
+              <Title> Hello, I'm Kunjal </Title>
+              <Text> I'm a PhD candidate at Manning College of Information and Computer Sciences, Universtiy of Massachusetts - Amherst. </Text>
+              <Text> My main area of research is <b className="text-primary lined-link">Machine Learning Training and Inference in Resource-</b> <b className="text-primary lined-link">constrained Environments</b>, advised by Prof. Hui Guan.</Text>
               <Text> I am currently a part of MLSys lab at UMass.</Text>
-              <ResumeButton href="Kunjal_Panchal_CV_Sept_2023_2_page.pdf" target="_blank"> Download Resume / CV </ResumeButton>
+              <ResumeButton href="Kunjal_Panchal_CV_Apr_2026.pdf" target="_blank"> Download Resume / CV </ResumeButton>
             </div>
           </AboutSection>
         </ContainerLayout>

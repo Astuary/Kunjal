@@ -4,6 +4,9 @@ import variables from '../../../data/variables';
 export const Intro = styled.div`
   padding: 8rem 0 4rem 0;
   font-family: "GT-Walsheim-Pro-Regular";
+  @media(max-width: ${variables.breakpointPhone}) {
+    padding: 5.5rem 0 2.5rem 0;
+  }
 `;
 export const HeaderIntro = styled.header`
   display: grid;
@@ -28,13 +31,13 @@ export const SubTitle = styled.h3`
 `
 export const Text = styled.p`
   font-size: .98rem;
-  line-height: 2;
+  line-height: 1.75;
   color: #000000;
-  margin-top: 2rem;
-  text-align: justify;
+  margin-top: 1.2rem;
+  text-align: left;
   @media(max-width: ${variables.breakpointPhone}) {
     margin-top: 1rem;
-    font-size: .8rem;
+    font-size: .9rem;
   }
 `
 export const SubText = styled.p`
@@ -58,7 +61,7 @@ export const WorkPost = styled.article`
   display: grid;
   grid-template-columns: 1fr 5fr;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   @media(max-width: ${variables.breakpointPhone}) {
     grid-template-columns: 1fr;
     border: 10px solid #fff;
@@ -99,7 +102,7 @@ export const WorkPost = styled.article`
 export const ResearchPost = styled.article`
   display: grid;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
   @media(max-width: ${variables.breakpointPhone}) {
     grid-template-columns: 1fr;
     border: 10px solid #fff;
@@ -107,7 +110,10 @@ export const ResearchPost = styled.article`
     box-shadow: 0 17px 56px rgba(125,127,129,.17);
 	}
   > div.content {
-    padding: 2rem 3rem;
+    padding: 1.25rem 2rem;
+    > header {
+      margin-bottom: 0.5rem;
+    }
     @media(max-width: ${variables.breakpointPhone}) {
       padding: 1rem 1rem;
     }
@@ -137,6 +143,14 @@ export const ResearchPost = styled.article`
   }
 `
 
+export const Authors = styled.p`
+  margin: 0 0 0.4rem 0;
+  color: ${variables.darkGrey};
+  font-size: 0.9rem;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+`
+
 export const Category = styled.span`
   font-family: "GT-Walsheim-Pro-Bold";
   color: ${variables.primary};
@@ -154,14 +168,25 @@ export const Period = styled.span`
   color: ${variables.darkGrey };
   text-transform: uppercase;
   letter-spacing: .05em;
-  font-size: 1.2em;
+  font-size: 1.05em;
   float: right;
+  @media(max-width: ${variables.breakpointPhone}) {
+    float: none;
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.95em;
+  }
 `
 
 export const Venue = styled.span`
   font-family: "GT-Walsheim-Pro-Medium";
   color: ${variables.darkGrey };
   letter-spacing: .05em;
-  font-size: 1.2em;
+  font-size: 1.05em;
   float: left;
+  @media(max-width: ${variables.breakpointPhone}) {
+    float: none;
+    display: block;
+    font-size: 0.95em;
+  }
 `

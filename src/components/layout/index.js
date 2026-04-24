@@ -4,7 +4,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import Navbar from "./navbar"
 import Footer from "./footer"
 
-import {GlobalStyle, ContainerLayout, MainContent} from '../common';
+import {GlobalStyle, ContainerLayout, MainContent} from '../common'
+import ImageDownloadGuards from "../common/imageDownloadGuards"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -20,6 +21,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
+      <ImageDownloadGuards />
       <MainContent>
         <ContainerLayout>
           <Navbar siteTitle={data.site.siteMetadata.title} />
