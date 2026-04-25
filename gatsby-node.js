@@ -2,6 +2,56 @@ const path = require(`path`)
 const _ = require("lodash")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+// gatsby-source-github-api stores the GraphQL result on `data`; Gatsby 2 can fail to
+// infer nested `data` on the GithubData node (especially in CI), breaking page queries.
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  createTypes(`
+    type GitHubLanguage {
+      name: String
+      color: String
+    }
+    type GitHubLanguageEdge {
+      node: GitHubLanguage
+    }
+    type GitHubLanguageConnection {
+      edges: [GitHubLanguageEdge!]!
+    }
+    type GitHubLicenseInfo {
+      name: String
+    }
+    type GitHubStargazerCount {
+      totalCount: Int
+    }
+    type GitHubRepository {
+      name: String
+      description: String
+      homepageUrl: String
+      resourcePath: String
+      forkCount: Int
+      createdAt: String
+      updatedAt: String
+      languages: GitHubLanguageConnection
+      licenseInfo: GitHubLicenseInfo
+      stargazers: GitHubStargazerCount
+    }
+    type GitHubRepositoryConnection {
+      nodes: [GitHubRepository!]!
+    }
+    type GitHubViewer {
+      name: String
+      avatarUrl: String
+      repositories: GitHubRepositoryConnection
+    }
+    type GitHubDataLayer {
+      viewer: GitHubViewer
+    }
+    type GithubData implements Node {
+      data: GitHubDataLayer
+    }
+  `)
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve(`./src/templates/blogs/post.js`)
