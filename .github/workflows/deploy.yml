@@ -2,11 +2,16 @@ name: Gatsby Deploy
 
 on:
   push:
-    branches: main
+    branches: [main]
 
+# Required to push the gh-pages branch with the default Actions token
+permissions:
+  contents: write
+
+# Optional: if you set GH_TOKEN in repo secrets (PAT with repo + read:user), GraphQL
+# “viewer” in gatsby-source-github-api matches *your* account, not the Actions bot.
 env:
-  # Used by `deploy:ci` in package.json to push the `gh-pages` branch
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  GATSBY_GITHUB_API_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   build:
@@ -18,17 +23,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # Gatsby 2 in this project is not reliable on Node 20+; 18 is a safe LTS
           node-version: "18"
           cache: npm
-
-      - name: Git user for gh-pages
-        run: |
-          git config --global user.email "kunjalspanchal@gmail.com"
-          git config --global user.name "Astuary"
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build and deploy to GitHub Pages
-        run: npm run deploy:ci
+      - name: Build (GitHub Pages + pathPrefix)
+        run: npx gatsby build --prefix-paths
+        # GITHUB_TOKEN is provided automatically; gatsby-config falls back to it when
+        # GATSBY_GITHUB_API_TOKEN (secret) is not set, so the GitHub data plugin can run
+        # without undefined token errors.
+
+      - name: Publish to gh-pages branch
+        run: |
+          git config --global user.email "kunjalspanchal@gmail.com"
+          git config --global user.name "Astuary"
+          npx gh-pages -d public \
+            -r "https://x-access-token:${GITHUB_TOKEN}@github.com/Astuary/Kunjal.git" \
+            -u "Astuary <kunjalspanchal@gmail.com>"

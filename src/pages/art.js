@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { graphql } from "gatsby"
+import { graphql, withPrefix } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { ContainerLayout, Intro } from "../components/common"
@@ -70,7 +70,7 @@ const ArtPage = ({ data }) => {
             {artImages.map((image, index) => (
               <ArtTile key={image.id}>
                 <img
-                  src={image.publicURL}
+                  src={withPrefix(image.publicURL)}
                   alt={`Artwork ${index + 1}`}
                   loading="lazy"
                   draggable={false}

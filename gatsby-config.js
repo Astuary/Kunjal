@@ -100,7 +100,10 @@ module.exports = {
     {
       resolve: `gatsby-source-github-api`,
       options: {
-        token: process.env.GATSBY_GITHUB_API_TOKEN,
+        // Local: set GATSBY_GITHUB_API_TOKEN in .env.production; CI: GitHub Actions
+        // provides GITHUB_TOKEN so the build is not "token is undefined"
+        token:
+          process.env.GATSBY_GITHUB_API_TOKEN || process.env.GITHUB_TOKEN,
         graphQLQuery: data.githubApiQuery,
         variables: data.githubApiVariables,
       },
