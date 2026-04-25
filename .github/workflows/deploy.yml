@@ -35,10 +35,14 @@ jobs:
         # GATSBY_GITHUB_API_TOKEN (secret) is not set, so the GitHub data plugin can run
         # without undefined token errors.
 
+      # Pushes ./public to the repo’s gh-pages branch. Uses github.token (not a manual
+      # x-access-token URL), which is more reliable than the gh-pages CLI in Actions.
       - name: Publish to gh-pages branch
-        run: |
-          git config --global user.email "kunjalspanchal@gmail.com"
-          git config --global user.name "Astuary"
-          npx gh-pages -d public \
-            -r "https://x-access-token:${GITHUB_TOKEN}@github.com/Astuary/Kunjal.git" \
-            -u "Astuary <kunjalspanchal@gmail.com>"
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ github.token }}
+          publish_dir: ./public
+          user_name: Astuary
+          user_email: kunjalspanchal@gmail.com
+          # Single orphan commit; keeps the gh-pages branch from growing a huge history
+          force_orphan: true
