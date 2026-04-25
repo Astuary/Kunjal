@@ -3,7 +3,49 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
-import {ContainerLayout, WorkPost, Venue, Period, Category, Intro, SubTitle, Title, Text} from "../components/common"
+import styled from "styled-components"
+import variables from "../data/variables"
+import {
+  ContainerLayout,
+  WorkPost,
+  Venue,
+  Period,
+  Intro,
+  Text,
+} from "../components/common"
+
+const DegreeHeading = styled.h2`
+  font-family: "GT-Walsheim-Pro-Bold";
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #232323;
+  text-transform: none;
+  margin: 0 0 0.5rem 0;
+  @media (max-width: ${variables.breakpointPhone}) {
+    font-size: 1.35rem;
+  }
+`
+
+const SchoolLine = styled.p`
+  font-family: "GT-Walsheim-Pro-Regular";
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #232323;
+  margin: 0 0 0.75rem 0;
+  font-weight: 400;
+  max-width: 42em;
+`
+
+const PeriodGpaRow = styled.div`
+  overflow: hidden;
+  margin-top: 0.25rem;
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+`
 
 const EducationIndex = ({ data }) => {
   const works = data.allMarkdownRemark.edges
@@ -28,23 +70,18 @@ const EducationIndex = ({ data }) => {
                     </div>
                     <div className="content">
                       <header>
-                      <div>
-                          {node.frontmatter.categories.map((tag, index) => (<Category key={index}>{tag}</Category>))}
-                        </div>
-                        <Title>
-                          <Link
-                            className="text-primary lined-link"
-                            style={{ boxShadow: `none`, pointerEvents: "none", cursor: "default" }}
-                            to="#"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            {title}
-                          </Link>
-                        </Title>
+                        <DegreeHeading>{title}</DegreeHeading>
+                        {Array.isArray(node.frontmatter.categories) &&
+                          node.frontmatter.categories.length > 0 && (
+                            <SchoolLine>
+                              {node.frontmatter.categories.join(" · ")}
+                            </SchoolLine>
+                          )}
+                        <PeriodGpaRow>
+                          <Venue>{node.frontmatter.period}</Venue>
+                          <Period>{node.frontmatter.gpa}</Period>
+                        </PeriodGpaRow>
                       </header>
-                        <Venue>{node.frontmatter.period}</Venue>
-                        <Period>{node.frontmatter.gpa}</Period>
-                        <br/>
                         <Text
                           dangerouslySetInnerHTML={{
                             __html: node.frontmatter.description || node.excerpt,

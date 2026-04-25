@@ -30,8 +30,13 @@ const RepositoryPage = ({data}) => {
               </RepoGrid>
             </>
           ) : (
-            <p>
-              GitHub repositories are temporarily unavailable. Please check back soon.
+            <p style={{ lineHeight: 1.7, color: "#232323", maxWidth: "36em" }}>
+              This page needs a GitHub API token that can read your account. The
+              default CI token does not include that, so you are seeing this message
+              instead of your repo list. Add a personal access token as the{" "}
+              <code>GH_TOKEN</code> repository secret (and use it for{" "}
+              <code>GATSBY_GITHUB_API_TOKEN</code> in the deploy workflow), then
+              rebuild.
             </p>
           )}
         </SectionIntro>
