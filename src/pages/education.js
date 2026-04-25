@@ -19,7 +19,6 @@ const DegreeHeading = styled.h2`
   font-size: 1.75rem;
   font-weight: 600;
   line-height: 1.3;
-  color: #232323;
   text-transform: none;
   margin: 0 0 0.5rem 0;
   @media (max-width: ${variables.breakpointPhone}) {
@@ -70,7 +69,12 @@ const EducationIndex = ({ data }) => {
                     </div>
                     <div className="content">
                       <header>
-                        <DegreeHeading>{title}</DegreeHeading>
+                        <DegreeHeading
+                          className="text-primary lined-link"
+                          style={{ boxShadow: "none" }}
+                        >
+                          {title}
+                        </DegreeHeading>
                         {Array.isArray(node.frontmatter.categories) &&
                           node.frontmatter.categories.length > 0 && (
                             <SchoolLine>
