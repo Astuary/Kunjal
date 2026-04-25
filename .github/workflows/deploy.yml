@@ -30,7 +30,7 @@ jobs:
         run: npm install
 
       - name: Build (GitHub Pages + pathPrefix)
-        run: npx gatsby build --prefix-paths
+        run: npm run build
         # GITHUB_TOKEN is provided automatically; gatsby-config falls back to it when
         # GATSBY_GITHUB_API_TOKEN (secret) is not set, so the GitHub data plugin can run
         # without undefined token errors.
