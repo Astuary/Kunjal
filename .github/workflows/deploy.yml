@@ -5,20 +5,30 @@ on:
     branches: main
 
 env:
+  # Used by `deploy:ci` in package.json to push the `gh-pages` branch
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: GitHub Config
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          # Gatsby 2 in this project is not reliable on Node 20+; 18 is a safe LTS
+          node-version: "18"
+          cache: npm
+
+      - name: Git user for gh-pages
         run: |
           git config --global user.email "kunjalspanchal@gmail.com"
           git config --global user.name "Astuary"
-      - name: Checkout
-        uses: actions/checkout@v2
+
       - name: Install dependencies
-        run: |
-          npm install
-      - name: Deploy
+        run: npm install
+
+      - name: Build and deploy to GitHub Pages
         run: npm run deploy:ci
