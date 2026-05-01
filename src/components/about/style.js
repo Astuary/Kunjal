@@ -1,4 +1,3 @@
-import Img from "gatsby-image"
 import styled from 'styled-components';
 import variables from '../../data/variables';
 
@@ -20,14 +19,13 @@ export const AboutSection = styled.section`
     }
   }
 `
-export const Avatar =styled(Img)`
+export const Avatar = styled.img`
   border-radius: 5px;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.15);
   width: 100%;
   height: 100%;
-  > div {
-    height: 100%;
-  }
+  display: block;
+  object-fit: cover;
 `
 export const Title = styled.h1`
   font-size: 3rem;

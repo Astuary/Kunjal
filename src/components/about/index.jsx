@@ -7,11 +7,7 @@ const About = () => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "botanic.jpeg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1600, quality: 95) {
-            ...GatsbyImageSharpFluid
-          }
-        }
+        publicURL
       }
     }
   `)
@@ -21,9 +17,10 @@ const About = () => {
         <ContainerLayout>
           <AboutSection>
             <Avatar
-              fluid={data.placeholderImage.childImageSharp.fluid}
+              src={data.placeholderImage.publicURL}
               alt="Kunjal Panchal"
-              imgStyle={{ objectFit: "cover" }}
+              loading="eager"
+              decoding="sync"
             />
             <div className="about-content">
               <Title> Hello, I'm Kunjal </Title>

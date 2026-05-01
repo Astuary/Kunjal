@@ -31,9 +31,17 @@ const ResearchIndex = ({ data }) => {
                           ))}
                         </Authors>
                         <Title>
-                          <a className="text-primary lined-link" style={{ boxShadow: `none` }} href={node.frontmatter.url}>
-                            {title}
-                          </a>
+                          {node.frontmatter.url ? (
+                            <a
+                              className="text-primary lined-link"
+                              style={{ boxShadow: `none` }}
+                              href={node.frontmatter.url}
+                            >
+                              {title}
+                            </a>
+                          ) : (
+                            <span className="text-primary">{title}</span>
+                          )}
                         </Title>
                         <Venue>{node.frontmatter.venue}</Venue>
                         <Period>{node.frontmatter.period}</Period>
