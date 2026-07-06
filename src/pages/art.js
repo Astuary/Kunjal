@@ -42,18 +42,13 @@ const ArtImageWrap = styled.div`
     `}
 `
 
-const ArtLabel = styled.span`
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 1;
-  padding: 0.35rem 0.65rem;
-  border-radius: 6px;
+const ArtCaption = styled.figcaption`
+  margin: 0 0 0.5rem;
   font-family: "GT-Walsheim-Pro-Bold", sans-serif;
-  font-size: 0.85rem;
+  font-size: 1rem;
   letter-spacing: 0.02em;
   color: #232323;
-  background: rgba(255, 255, 255, 0.88);
+  text-align: left;
 `
 
 const ArtTile = styled.figure`
@@ -136,7 +131,7 @@ const ArtPage = ({ data }) => {
               return (
                 <ArtTile key={image.id} $wide={wide}>
                   <ArtImageWrap $wide={wide}>
-                    {title && <ArtLabel>{title}</ArtLabel>}
+                    {title && <ArtCaption>{title}</ArtCaption>}
                     <img
                       src={image.publicURL}
                       alt={title || `Artwork ${index + 1}`}
