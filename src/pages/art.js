@@ -8,6 +8,10 @@ import variables from "../data/variables"
 
 const TWO_COLUMN_ART = new Set(["art-047"])
 
+const ART_TITLES = {
+  "art-047": "A Fantasy Map",
+}
+
 const ArtGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -20,6 +24,36 @@ const ArtGrid = styled.div`
   @media (max-width: ${variables.breakpointPhone}) {
     grid-template-columns: 1fr;
   }
+`
+
+const ArtImageWrap = styled.div`
+  position: relative;
+  width: 100%;
+
+  ${({ $wide }) =>
+    $wide &&
+    css`
+      width: calc((100% - 2rem) * 2 / 3 + 1rem);
+      margin: 0 auto;
+
+      @media (max-width: ${variables.breakpointLarge}) {
+        width: 100%;
+      }
+    `}
+`
+
+const ArtLabel = styled.span`
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-family: "GT-Walsheim-Pro-Bold", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: #232323;
+  background: rgba(255, 255, 255, 0.88);
 `
 
 const ArtTile = styled.figure`
@@ -47,8 +81,8 @@ const ArtTile = styled.figure`
       overflow: visible;
 
       img {
-        width: calc((100% - 2rem) * 2 / 3 + 1rem);
-        margin: 0 auto;
+        width: 100%;
+        margin: 0;
         height: auto;
         aspect-ratio: auto;
         object-fit: contain;
@@ -95,16 +129,24 @@ const ArtPage = ({ data }) => {
             I practice with fine-line ink and oil pastel mediums, exploring quiet everyday moments.
           </ArtIntro>
           <ArtGrid>
-            {artImages.map((image, index) => (
-              <ArtTile key={image.id} $wide={TWO_COLUMN_ART.has(image.name)}>
-                <img
-                  src={image.publicURL}
-                  alt={`Artwork ${index + 1}`}
-                  loading="lazy"
-                  draggable={false}
-                />
-              </ArtTile>
-            ))}
+            {artImages.map((image, index) => {
+              const wide = TWO_COLUMN_ART.has(image.name)
+              const title = index === 0 ? ART_TITLES[image.name] : null
+
+              return (
+                <ArtTile key={image.id} $wide={wide}>
+                  <ArtImageWrap $wide={wide}>
+                    {title && <ArtLabel>{title}</ArtLabel>}
+                    <img
+                      src={image.publicURL}
+                      alt={title || `Artwork ${index + 1}`}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </ArtImageWrap>
+                </ArtTile>
+              )
+            })}
           </ArtGrid>
         </ContainerLayout>
       </Intro>
