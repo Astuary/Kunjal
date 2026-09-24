@@ -17,24 +17,24 @@ export const FooterStyle = styled.footer`
 		text-align: center;
 	}
 	.quote {
-		font-size: 4rem;
-		font-family: "GT-Walsheim-Pro-Bold";
-		line-height: 1.2;
+		font-size: 3rem;
+		font-family: ${variables.pixelFont};
+		line-height: 1.4;
 		color: ${variables.primary};
 		@media(max-width: ${variables.breakpointPhone}) {
-			font-size: 2rem;
+			font-size: 1.5rem;
 		}
 	}
 `;
 
 export const SubRight = styled.p`
-	font-size: 1rem;
+	font-size: .8rem;
 	line-height: 1.8;
 	letter-spacing:2px;
 	text-transform: capitalize;
 	margin-bottom: 20px;
-	font-family: "GT-Walsheim-Pro-Bold";
-`	
+	font-family: ${variables.pixelFont};
+`
 export const CopyRight = styled.p`
 	font-size: 11px;
 	line-height: 1.8;
@@ -66,19 +66,20 @@ export const MediaLink = styled.a`
 	padding: 1rem 0rem;
 	padding-bottom: .5rem;
 	line-height: 1;
-	font-size: 1rem;
+	font-size: .85rem;
   text-transform: capitalize;
-  font-family: "GT-Walsheim-Pro-Bold";
+  font-family: ${variables.pixelFont};
 	color: ${variables.primary};
-	
+
 `
 
 export const FooterLowerBar = styled.div`
   margin-top: 2rem;
   padding: 1.25rem 1.5rem;
-  border: 1px solid #e7e7e7;
-  border-radius: 14px;
-  background: #ffffffcc;
+  border: ${variables.pixelBorder} solid ${variables.black};
+  border-radius: 0;
+  box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
+  background: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;

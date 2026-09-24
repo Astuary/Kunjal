@@ -137,7 +137,7 @@ export const GlobalStyle = createGlobalStyle`
   position: relative;
   padding-top: .5em;
   padding-bottom: .25em;
-  transition: all .2s ease-out;
+  transition: all .2s steps(4);
   will-change: transform, color;
   &:after {
     z-index: 1;
@@ -152,16 +152,14 @@ export const GlobalStyle = createGlobalStyle`
     transform: scale(0, 1);
     transform-origin: 100% 50%;
     will-change: transform;
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), 
-    -webkit-transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.4s steps(4), background-color 0.2s steps(2);
   }
   &:hover:after,
   &.active:after {
     background-color: ${variables.primary};
     transform: scale(1);
     transform-origin: 0 50%;
-    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1), background-color 0.2s ease-out, 
-    -webkit-transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.4s steps(4), background-color 0.2s steps(2);
   }
 }
 

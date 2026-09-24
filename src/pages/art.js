@@ -15,6 +15,7 @@ const ART_TITLES = {
 const ArtGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
   gap: 1rem;
 
   @media (max-width: ${variables.breakpointLarge}) {
@@ -48,19 +49,21 @@ const ArtLabel = styled.span`
   left: 0.75rem;
   z-index: 1;
   padding: 0.35rem 0.65rem;
-  border-radius: 6px;
-  font-family: "GT-Walsheim-Pro-Bold", sans-serif;
-  font-size: 0.85rem;
+  border-radius: 0;
+  border: 2px solid ${variables.black};
+  font-family: ${variables.pixelFont};
+  font-size: 0.7rem;
   letter-spacing: 0.02em;
   color: #232323;
-  background: rgba(255, 255, 255, 0.88);
+  background: #fff;
 `
 
 const ArtTile = styled.figure`
   margin: 0;
-  border-radius: 12px;
+  border-radius: 0;
+  border: ${variables.pixelBorder} solid ${variables.black};
   overflow: hidden;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+  box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
   background: #f7f7f7;
 
   img {
@@ -78,6 +81,7 @@ const ArtTile = styled.figure`
       grid-column: 1 / -1;
       background: transparent;
       box-shadow: none;
+      border: none;
       overflow: visible;
 
       img {
@@ -86,8 +90,9 @@ const ArtTile = styled.figure`
         height: auto;
         aspect-ratio: auto;
         object-fit: contain;
-        border-radius: 12px;
-        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+        border-radius: 0;
+        border: ${variables.pixelBorder} solid ${variables.black};
+        box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
         background: #f7f7f7;
       }
 

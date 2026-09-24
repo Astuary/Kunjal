@@ -10,3 +10,13 @@
   font-family: 'GT-Walsheim-Pro-Bold';
   src: url('../../../assets/fonts/GT-Walsheim-Pro-Bold.woff2') format('woff2'); /* Super Modern Browsers */
 }
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('../../../assets/fonts/Silkscreen-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('../../../assets/fonts/Silkscreen-Bold.woff2') format('woff2');
+  font-weight: 700;
+}

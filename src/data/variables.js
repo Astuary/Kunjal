@@ -6,6 +6,13 @@ export default {
   darkGrey: "#333447",
   black: "#000",
 
+  // pixel-art UI chrome
+  pixelFont: "'Silkscreen', 'GT-Walsheim-Pro-Bold', monospace",
+  pixelBorder: "3px",
+  pixelShadow: "4px 4px 0",
+  pixelShadowSmall: "2px 2px 0",
+  shadowColor: "#333447",
+
   // grid
   width: "96%",
   wrapperWidth: "65rem",

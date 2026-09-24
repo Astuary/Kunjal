@@ -15,10 +15,10 @@ import {
 } from "../components/common"
 
 const DegreeHeading = styled.h2`
-  font-family: "GT-Walsheim-Pro-Bold";
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 1.3;
+  font-family: ${variables.pixelFont};
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.6;
   text-transform: none;
   margin: 0 0 0.5rem 0;
   @media (max-width: ${variables.breakpointPhone}) {

@@ -4,8 +4,8 @@ import variables from '../../../data/variables';
 export const NavbarLogo = styled.div`
   a {
     color: ${variables.black};
-    font-size: 2.3rem;
-    font-family: "GT-Walsheim-Pro-Bold";
+    font-size: 1.7rem;
+    font-family: ${variables.pixelFont};
   }
   @media(max-width: ${variables.breakpointPhone}) {
     display: none
@@ -31,23 +31,30 @@ export const NavbarList = styled.ul`
   list-style: none;
   margin: 0;
   > li a {
-    font-size: 1.2rem;
+    font-family: ${variables.pixelFont};
+    font-size: .8rem;
     color: #232323;
-    padding: .5rem .2rem;
+    padding: .5rem .4rem;
     margin: 0 1rem;
     text-decoration: none;
     vertical-align: middle;
+    transition: background-color 80ms steps(1), color 80ms steps(1);
+    &:hover,
+    &.active {
+      background-color: ${variables.black};
+      color: ${variables.inverse};
+    }
     > svg {
       width: 18px;
       margin-right: 5px;
     }
-    span, 
+    span,
     svg {
       display: block;
       vertical-align: middle;
     }
     @media(max-width: ${variables.breakpointPhone}) {
-      font-size: 1rem;
+      font-size: .7rem;
     }
   }
   @media(max-width: ${variables.breakpointPhone}) {

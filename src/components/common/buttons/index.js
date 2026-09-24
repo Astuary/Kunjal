@@ -4,47 +4,40 @@ import colors from "../../../data/variables";
 export const ButtonDefault = styled.a`
   cursor: pointer;
   margin: 10% 0%;
-  font-family: "GT-Walsheim-Pro-Medium";
-  font-size: inherit;
+  font-family: ${colors.pixelFont};
+  font-size: .8em;
   text-align: center;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  text-decoration:none;
-  border: 4px solid ${colors.primary};
-  color: ${colors.primary};
+  text-decoration: none;
+  border: ${colors.pixelBorder} solid ${colors.black};
+  color: ${colors.black};
   background: #fff;
   outline: none;
   position: relative;
   display: inline-block;
   padding: 15px 10px 14px;
-  cursor: pointer;
   width: auto;
-  min-width:200px;
-  &::after {
-    min-width:200px;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 4px solid ${colors.primary};
-    background-color: ${colors.primary};
-    left: 4px;
-    top: 9px;
-    z-index: -1;
-    content: '';
-    transition: all 0.5s;
+  min-width: 200px;
+  box-shadow: ${colors.pixelShadow} ${colors.shadowColor};
+  transition: transform 80ms steps(1), box-shadow 80ms steps(1);
+  &:hover {
+    background: ${colors.primary};
+    border-color: ${colors.primary};
+    color: #fff;
   }
-  &:hover:after {
-    top: 0px;
-    left: -4px;
+  &:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 ${colors.shadowColor};
   }
 `;
 
 export const ReadMore = styled.span`
   color: #000;
-  font-size: 1rem;
-  text-transform: inherit;
+  font-size: .85rem;
+  text-transform: uppercase;
   letter-spacing: .7px;
-  font-family: "GT-Walsheim-Pro-Medium";
+  font-family: ${colors.pixelFont};
   &:hover {
     color: ${colors.primary};
   }
@@ -57,19 +50,24 @@ export const ReadMore = styled.span`
 
 export const ResumeButton = styled.a`
   color: #000;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  font-family: "GT-Walsheim-Pro-Medium";
-  border: 5px solid #e8e7e7;
+  font-size: .85rem;
+  letter-spacing: 1px;
+  font-family: ${colors.pixelFont};
+  border: ${colors.pixelBorder} solid ${colors.black};
   display: block;
   margin: 6rem 0 2rem 0;
   padding: 2rem;
   text-align: center;
   text-transform: uppercase;
-  border-radius: .5rem;
-  transition: color 300ms ease-in-out, border-color 400ms ease-in-out;
+  border-radius: 0;
+  box-shadow: ${colors.pixelShadow} ${colors.shadowColor};
+  transition: color 80ms steps(1), border-color 80ms steps(1), transform 80ms steps(1), box-shadow 80ms steps(1);
   &:hover {
     color: ${colors.primary};
-    border-color: ${colors.primary}
+    border-color: ${colors.primary};
+  }
+  &:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 ${colors.shadowColor};
   }
 `

@@ -4,7 +4,7 @@ module.exports = {
   Sitelogo: '#',
   SiteLogoText: 'Kunjal',
   SiteAuthor: 'Kunjal Panchal',
-  SiteDescription: 'Kunjal Panchal - PhD Student',
+  SiteDescription: 'Kunjal Panchal - Research Scientist',
   defaultDescription: 'Kunjal Panchal - Portfolio', 
   githubApiQuery: `query ($number_of_repos: Int!) {
     viewer {

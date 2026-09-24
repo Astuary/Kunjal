@@ -6,9 +6,10 @@ export const Intro = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
   text-transform: capitalize;
-  font-family: "GT-Walsheim-Pro-Bold";
+  font-family: "Silkscreen", "GT-Walsheim-Pro-Bold", monospace;
 `
 
 export const ArticlePost = styled.article`
@@ -53,7 +54,7 @@ export const NaviagtionLi = styled.li`
     text-align: right;
   }
   a {
-    font-size: 1.3rem;
-    font-family: "GT-Walsheim-Pro-Medium";
+    font-size: .95rem;
+    font-family: "Silkscreen", "GT-Walsheim-Pro-Medium", monospace;
   }
 `

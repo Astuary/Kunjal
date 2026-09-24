@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import variables from '../../data/variables';
 
 export const AboutSection = styled.section`
@@ -19,20 +20,23 @@ export const AboutSection = styled.section`
     }
   }
 `
-export const Avatar = styled.img`
-  border-radius: 5px;
-  box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.15);
+export const Avatar = styled(Img)`
+  border-radius: 0;
+  border: ${variables.pixelBorder} solid ${variables.black};
+  box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
   width: 100%;
   height: auto;
   display: block;
   align-self: start;
+  overflow: hidden;
 `
 export const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 1.9rem;
+  line-height: 1.5;
   text-transform: capitalize;
-  font-family: "GT-Walsheim-Pro-Bold";
+  font-family: ${variables.pixelFont};
   @media(max-width: ${variables.breakpointPhone}) {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 `
 export const Text = styled.p`
@@ -58,7 +62,7 @@ export const Text = styled.p`
 // `
 
 export const SubTitle = styled.h2`
-  font-family: "GT-Walsheim-Pro-Medium";
+  font-family: ${variables.pixelFont};
   margin-top: 3rem;
   margin-bottom: 2rem;
   text-align: center;

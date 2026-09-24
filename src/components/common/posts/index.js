@@ -16,17 +16,19 @@ export const HeaderIntro = styled.header`
   margin-bottom: 6rem;
 `
 export const Title = styled.h1`
-  font-family: "GT-Walsheim-Pro-Bold";
-  font-size: 2rem;
+  font-family: ${variables.pixelFont};
+  font-size: 1.5rem;
+  line-height: 1.6;
   text-transform: capitalize;
   @media(max-width: ${variables.breakpointPhone}) {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 `
 export const SubTitle = styled.h3`
-  font-size: 2rem;
+  font-size: 1.4rem;
+  line-height: 1.6;
   text-transform: capitalize;
-  font-family: "GT-Walsheim-Pro-Bold";
+  font-family: ${variables.pixelFont};
   text-decoration: underline;
 `
 export const Text = styled.p`
@@ -64,9 +66,9 @@ export const WorkPost = styled.article`
   margin-bottom: 3rem;
   @media(max-width: ${variables.breakpointPhone}) {
     grid-template-columns: 1fr;
-    border: 10px solid #fff;
-    border-radius: .9rem;
-    box-shadow: 0 17px 56px rgba(125,127,129,.17);
+    border: ${variables.pixelBorder} solid ${variables.black};
+    border-radius: 0;
+    box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
 	}
   > div.content {
     padding: 2rem 3rem;
@@ -82,9 +84,9 @@ export const WorkPost = styled.article`
       max-height: 100px;
       overflow: hidden;
       @media(min-width: ${variables.breakpointPhone}) {
-        border: 10px solid #ffd0d2;
-        border-radius: .9rem;
-        box-shadow: 0 17px 56px rgba(125,127,129,.17);
+        border: ${variables.pixelBorder} solid ${variables.black};
+        border-radius: 0;
+        box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
       }
       > a > div {
         transition: all 800ms ease-in-out;
@@ -105,9 +107,9 @@ export const ResearchPost = styled.article`
   margin-bottom: 2.5rem;
   @media(max-width: ${variables.breakpointPhone}) {
     grid-template-columns: 1fr;
-    border: 10px solid #fff;
-    border-radius: .9rem;
-    box-shadow: 0 17px 56px rgba(125,127,129,.17);
+    border: ${variables.pixelBorder} solid ${variables.black};
+    border-radius: 0;
+    box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
 	}
   > div.content {
     padding: 1.25rem 2rem;
@@ -126,9 +128,9 @@ export const ResearchPost = styled.article`
       max-height: 100px;
       overflow: hidden;
       @media(min-width: ${variables.breakpointPhone}) {
-        border: 10px solid #ffd0d2;
-        border-radius: .9rem;
-        box-shadow: 0 17px 56px rgba(125,127,129,.17);
+        border: ${variables.pixelBorder} solid ${variables.black};
+        border-radius: 0;
+        box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
       }
       > a > div {
         transition: all 800ms ease-in-out;
@@ -152,23 +154,23 @@ export const Authors = styled.p`
 `
 
 export const Category = styled.span`
-  font-family: "GT-Walsheim-Pro-Bold";
+  font-family: ${variables.pixelFont};
   color: ${variables.primary};
   text-transform: uppercase;
   letter-spacing: .05em;
-  font-size: .8em;
-  border-radius: .25rem;
+  font-size: .65em;
+  border-radius: 0;
   padding: .5rem 1rem;
   margin-right: 1rem;
   border: 3px solid ${variables.primary};
 `
 
 export const Period = styled.span`
-  font-family: "GT-Walsheim-Pro-Medium";
+  font-family: ${variables.pixelFont};
   color: ${variables.darkGrey };
   text-transform: uppercase;
   letter-spacing: .05em;
-  font-size: 1.05em;
+  font-size: .8em;
   float: right;
   @media(max-width: ${variables.breakpointPhone}) {
     float: none;
@@ -179,10 +181,10 @@ export const Period = styled.span`
 `
 
 export const Venue = styled.span`
-  font-family: "GT-Walsheim-Pro-Medium";
+  font-family: ${variables.pixelFont};
   color: ${variables.darkGrey };
   letter-spacing: .05em;
-  font-size: 1.05em;
+  font-size: .8em;
   float: left;
   @media(max-width: ${variables.breakpointPhone}) {
     float: none;

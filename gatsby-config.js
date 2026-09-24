@@ -2,6 +2,10 @@ const data = require('./src/data/data');
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+
+const githubToken =
+  process.env.GATSBY_GITHUB_API_TOKEN || process.env.GITHUB_TOKEN;
+
 module.exports = {
   pathPrefix: "/Kunjal",
   siteMetadata: {
@@ -97,13 +101,15 @@ module.exports = {
         icon: `src/assets/img/portfolio-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
+    githubToken && {
       resolve: `gatsby-source-github-api`,
       options: {
         // Local: set GATSBY_GITHUB_API_TOKEN in .env.production; CI: GitHub Actions
-        // provides GITHUB_TOKEN so the build is not "token is undefined"
-        token:
-          process.env.GATSBY_GITHUB_API_TOKEN || process.env.GITHUB_TOKEN,
+        // provides GITHUB_TOKEN so the build is not "token is undefined".
+        // When no token is available (local dev/build without .env), the plugin
+        // is omitted entirely so the build doesn't fail; /repositories will show
+        // its "needs a token" fallback message.
+        token: githubToken,
         graphQLQuery: data.githubApiQuery,
         variables: data.githubApiVariables,
       },
@@ -118,5 +124,5 @@ module.exports = {
     // },
     // Disable offline caching to avoid stale image assets.
     `gatsby-plugin-remove-serviceworker`,
-  ],
+  ].filter(Boolean),
 }

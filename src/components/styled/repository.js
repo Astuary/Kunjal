@@ -17,9 +17,9 @@ export const RepoInfo = styled.div`
 export const Avatar = styled.div`
   width: 100px;
   height: 100px;
-  border-radius: .5rem;
-  border: 10px solid #fff;
-  box-shadow: 0 0 20px 10px rgb(27 26 26 / 10%);
+  border-radius: 0;
+  border: ${variables.pixelBorder} solid ${variables.black};
+  box-shadow: ${variables.pixelShadowSmall} ${variables.shadowColor};
   margin-right: 1rem;
   background-color: #F9F9F9;
   background-size: cover;
@@ -27,14 +27,16 @@ export const Avatar = styled.div`
 `
 
 export const RepoContent = styled.div`
-  border-radius: .5rem;
-  border: 1px solid #e1e4e8;
+  border-radius: 0;
+  border: ${variables.pixelBorder} solid ${variables.black};
   margin-bottom: 2rem;
   padding: 1rem;
   font-size: 16;
-  transition: all 200ms ease-in-out;
+  box-shadow: ${variables.pixelShadow} ${variables.shadowColor};
+  transition: transform 80ms steps(1), box-shadow 80ms steps(1);
   &:hover {
-    box-shadow: 0px 0px 36px 25px rgb(0 0 0 / 3%);
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 ${variables.shadowColor};
     h2 a {
       color: ${variables.primary};
     }
@@ -43,11 +45,12 @@ export const RepoContent = styled.div`
 export const Title = styled.h2`
   margin-bottom: 0;
   margin-top: 0;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
   text-transform: capitalize;
-  font-family: "GT-Walsheim-Pro-Bold";
+  font-family: ${variables.pixelFont};
   @media(max-width: ${variables.breakpointPhone}) {
-    font-size: 1rem;
+    font-size: .85rem;
   }
 `
 export const RepoHead = styled.div`
@@ -67,9 +70,9 @@ export const Text = styled.p`
 export const FooterItem = styled.span`
   margin-right: .89rem;
   margin-bottom: 1rem;
-  font-size: .9rem;
+  font-size: .75rem;
   color: #242525;
-  font-family: "GT-Walsheim-Pro-Medium";
+  font-family: ${variables.pixelFont};
   vertical-align: middle;
   display: inline-block;
   > * {
